@@ -106,16 +106,26 @@ HEADERS  += \
     MyApplication.h
 
 DISTFILES += \
-    BesLyric.rc \
     version.txt
 
 RESOURCES += \
     resource.qrc
 
 
+# Version number. All in one.
+VERSION = 3.1.2
+DEFINES *= APP_VERSION="\\\"$${VERSION}\\\""
+
+
 # windows icon and exe file infomation
+# https://doc.qt.io/qt-5/qmake-platform-notes.html#adding-windows-resource-files
 win32{
-RC_FILE = Beslyric.rc
+    QMAKE_TARGET_COMPANY = "BesStudio"
+    QMAKE_TARGET_DESCRIPTION = "Lrc maker for Netease Cloud Music"
+    QMAKE_TARGET_COPYRIGHT = "copyleft (C) GPL"
+    QMAKE_TARGET_PRODUCT = "BesLyric"
+    RC_ICONS = Beslyric.ico
+    RC_LANG = 0x0804 # zh-CN
 }
 
 # set icon under Mac Os
